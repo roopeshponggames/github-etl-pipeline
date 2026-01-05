@@ -4,7 +4,7 @@
     "file_name": "pool_6371_9999.pol",
     "parent_folder": "pools",
     "folder_path": "samples/pools",
-    "processed_at": "2026-01-05T21:50:27.735118+00:00",
+    "processed_at": "2026-01-05T21:54:17.132985+00:00",
     "file_size_bytes": 3114035,
     "pool_type": "pool",
     "pool_id": "6371",
@@ -27,14 +27,6 @@
       "TB1": 12731
     },
     "type_statistics": {
-      "TB1": {
-        "count": 12731,
-        "sum": 5156330,
-        "min": 10,
-        "max": 15480,
-        "avg": 405.02,
-        "percentage": 1.27
-      },
       "UNKNOWN": {
         "count": 987269,
         "sum": 4243650,
@@ -42,6 +34,14 @@
         "max": 10200,
         "avg": 4.3,
         "percentage": 98.73
+      },
+      "TB1": {
+        "count": 12731,
+        "sum": 5156330,
+        "min": 10,
+        "max": 15480,
+        "avg": 405.02,
+        "percentage": 1.27
       }
     },
     "value_distribution": {
