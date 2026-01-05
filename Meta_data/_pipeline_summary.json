@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-01-05T17:35:47.658250",
+  "total_files_processed": 2,
+  "successful_transforms": 2,
+  "failed_transforms": 0,
+  "errors": [],
+  "output_files": [
+    "Meta_data/samples/configs/database_access.json",
+    "Meta_data/samples/policies/network_policy.json"
+  ]
+}

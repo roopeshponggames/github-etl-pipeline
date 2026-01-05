@@ -1,0 +1,22 @@
+# Sample Policy Configuration File
+# Format: key=value
+
+policy_name=SecurityPolicy_v1
+policy_version=2.3.1
+created_date=2024-01-15
+author=admin@example.com
+
+# Network settings
+allowed_ports=80,443,8080
+blocked_ips=192.168.1.100,10.0.0.50
+max_connections=1000
+
+# Authentication
+auth_method=oauth2
+token_expiry=3600
+refresh_enabled=true
+
+# Logging
+log_level=INFO
+log_destination=https://logs.example.com/intake
+retain_days=30

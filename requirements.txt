@@ -1,0 +1,10 @@
+# ETL Pipeline Dependencies
+# Most functionality uses Python standard library
+
+# Optional: For enhanced data processing (uncomment if needed)
+# pandas>=2.0.0
+# pyyaml>=6.0
+
+# Optional: For better logging and CLI (uncomment if needed)
+# rich>=13.0.0
+# click>=8.0.0
