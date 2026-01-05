@@ -1,11 +1,30 @@
 {
-  "timestamp": "2026-01-05T17:35:47.658250",
-  "total_files_processed": 2,
-  "successful_transforms": 2,
+  "timestamp": "2026-01-05T19:44:20.797175+00:00",
+  "total_files_processed": 3,
+  "successful_transforms": 3,
   "failed_transforms": 0,
   "errors": [],
   "output_files": [
-    "Meta_data/samples/configs/database_access.json",
-    "Meta_data/samples/policies/network_policy.json"
-  ]
+    "Meta_data\\samples\\pools\\0201\\Pool_0201_292.json",
+    "Meta_data\\samples\\pools\\0201\\Pool_0201_294.json",
+    "Meta_data\\samples\\pools\\Pool_0201_395.json"
+  ],
+  "aggregated": {
+    "total_files_processed": 3,
+    "total_records_across_all_files": 2100000,
+    "total_sum_across_all_files": 165248960,
+    "global_type_distribution": {
+      "UNKNOWN": 1957361,
+      "TB2": 37398,
+      "TF1": 37304,
+      "TB1": 34256,
+      "TB3": 33569,
+      "TF2": 112
+    },
+    "files_by_folder": {
+      "0201": 2,
+      "pools": 1
+    },
+    "generated_at": "2026-01-05T19:44:20.797175+00:00"
+  }
 }
