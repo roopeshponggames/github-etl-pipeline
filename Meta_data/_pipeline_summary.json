@@ -1,30 +1,30 @@
 {
-  "timestamp": "2026-01-05T19:44:20.797175+00:00",
+  "timestamp": "2026-01-05T21:50:27.824196+00:00",
   "total_files_processed": 3,
   "successful_transforms": 3,
   "failed_transforms": 0,
   "errors": [],
   "output_files": [
-    "Meta_data\\samples\\pools\\0201\\Pool_0201_292.json",
-    "Meta_data\\samples\\pools\\0201\\Pool_0201_294.json",
-    "Meta_data\\samples\\pools\\Pool_0201_395.json"
+    "Meta_data/samples/pools/0201/Pool_0201_292.json",
+    "Meta_data/samples/pools/0201/Pool_0201_294.json",
+    "Meta_data/samples/pools/pool_6371_9999.json"
   ],
   "aggregated": {
     "total_files_processed": 3,
-    "total_records_across_all_files": 2100000,
-    "total_sum_across_all_files": 165248960,
+    "total_records_across_all_files": 3000000,
+    "total_sum_across_all_files": 55904390,
     "global_type_distribution": {
-      "UNKNOWN": 1957361,
-      "TB2": 37398,
-      "TF1": 37304,
-      "TB1": 34256,
-      "TB3": 33569,
-      "TF2": 112
+      "UNKNOWN": 2944630,
+      "TB1": 27247,
+      "TB2": 14648,
+      "TF1": 9454,
+      "TB3": 4019,
+      "TF2": 2
     },
     "files_by_folder": {
       "0201": 2,
       "pools": 1
     },
-    "generated_at": "2026-01-05T19:44:20.797175+00:00"
+    "generated_at": "2026-01-05T21:50:27.824276+00:00"
   }
 }
