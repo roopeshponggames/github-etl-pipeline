@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "source_file": "samples/pools/0201/Pool_0201_294.pol",
+    "source_file": "samples\\pools\\0201\\Pool_0201_294.pol",
     "file_name": "Pool_0201_294.pol",
     "parent_folder": "0201",
-    "folder_path": "samples/pools/0201",
-    "processed_at": "2026-01-05T21:50:26.720050+00:00",
-    "file_size_bytes": 3387954,
+    "folder_path": "samples\\pools\\0201",
+    "processed_at": "2026-01-05T22:01:42.039434+00:00",
+    "file_size_bytes": 4387954,
     "pool_type": "Pool",
     "pool_id": "0201",
     "pool_variant": "294"
@@ -31,21 +31,13 @@
       "TF2": 1
     },
     "type_statistics": {
-      "TF2": {
-        "count": 1,
-        "sum": 10000,
-        "min": 10000,
-        "max": 10000,
-        "avg": 10000.0,
-        "percentage": 0.0
-      },
-      "TB2": {
-        "count": 7324,
-        "sum": 2883295,
-        "min": 175,
-        "max": 3075,
-        "avg": 393.68,
-        "percentage": 0.73
+      "UNKNOWN": {
+        "count": 978680,
+        "sum": 15861755,
+        "min": 0,
+        "max": 4970,
+        "avg": 16.21,
+        "percentage": 97.87
       },
       "TB3": {
         "count": 2010,
@@ -55,6 +47,14 @@
         "avg": 584.7,
         "percentage": 0.2
       },
+      "TB2": {
+        "count": 7324,
+        "sum": 2883295,
+        "min": 175,
+        "max": 3075,
+        "avg": 393.68,
+        "percentage": 0.73
+      },
       "TB1": {
         "count": 7258,
         "sum": 2127835,
@@ -63,13 +63,13 @@
         "avg": 293.17,
         "percentage": 0.73
       },
-      "UNKNOWN": {
-        "count": 978680,
-        "sum": 15861755,
-        "min": 0,
-        "max": 4970,
-        "avg": 16.21,
-        "percentage": 97.87
+      "TF2": {
+        "count": 1,
+        "sum": 10000,
+        "min": 10000,
+        "max": 10000,
+        "avg": 10000.0,
+        "percentage": 0.0
       },
       "TF1": {
         "count": 4727,
