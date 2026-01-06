@@ -23,9 +23,10 @@ EXCLUDED_DIRS = {
 }
 
 
+
 def find_all_pol_files(repo_root: Path) -> List[Path]:
     """
-    Recursively find all .pol files in the repository.
+    Recursively find all .pol files in the samples/pools2 directory.
     
     Args:
         repo_root: Path to the repository root
@@ -35,7 +36,14 @@ def find_all_pol_files(repo_root: Path) -> List[Path]:
     """
     pol_files = []
     
-    for path in repo_root.rglob('*.pol'):
+    # Target specific directory as requested
+    target_dir = repo_root / 'samples' / 'pools2'
+    
+    if not target_dir.exists():
+        logger.warning(f"Directory {target_dir} not found. Returning empty list.")
+        return []
+    
+    for path in target_dir.rglob('*.pol'):
         # Skip excluded directories
         if any(excluded in path.parts for excluded in EXCLUDED_DIRS):
             continue
@@ -166,8 +174,11 @@ def get_changed_pol_files(repo_root: Path) -> List[Dict[str, Any]]:
         logger.info("No changed files detected from git")
         return []
     
-    # Filter for .pol files only
-    changed_pol_files = [f for f in changed_files if f.endswith('.pol')]
+    # Filter for .pol files in samples/pools2 only
+    changed_pol_files = [
+        f for f in changed_files 
+        if f.endswith('.pol') and 'samples/pools2' in f.replace('\\', '/')
+    ]
     
     if not changed_pol_files:
         logger.info("No .pol files in the changed files list")

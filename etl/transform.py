@@ -1,229 +1,176 @@
 """
 Transform Module
-Parses .pol pool data files containing value-type pairs.
+Parses .pol pool data files and calculates RTP, volatility, hit frequency.
 
-Format: Each line contains "<numeric_value> <type_code>"
+Format: Each line contains "<value> <type_code>" or "<value> <type_code> <extra_value>"
 Example:
     1800 TB2
-    900 TB3
+    900 TB3 100
     515 TB2
 """
 
 import re
 import logging
-from typing import Dict, Any, List, Tuple
+import numpy as np
+import pandas as pd
+from pathlib import Path
+from typing import Dict, Any, List, Tuple, Optional
 from datetime import datetime, timezone
 from collections import Counter
 
 logger = logging.getLogger(__name__)
 
+# Global game lookup dataframe - loaded once
+_game_df: Optional[pd.DataFrame] = None
 
-def parse_pol_content(content: str) -> Tuple[List[Dict[str, Any]], List[str]]:
+
+def load_game_lookup(repo_root: Path) -> Optional[pd.DataFrame]:
     """
-    Parse .pol file content into structured records.
+    Load the game_id_to_pools.xlsx lookup file.
     
-    Each line format: "<value> <type_code>"
+    Args:
+        repo_root: Path to the repository root
+        
+    Returns:
+        DataFrame with game lookup data or None if not found
+    """
+    global _game_df
+    
+    if _game_df is not None:
+        return _game_df
+    
+    # Search for the lookup file
+    possible_paths = [
+        repo_root / 'game_id_to_pools.xlsx',
+        repo_root / 'config' / 'game_id_to_pools.xlsx',
+        repo_root / 'data' / 'game_id_to_pools.xlsx',
+    ]
+    
+    for path in possible_paths:
+        if path.exists():
+            logger.info(f"Loading game lookup from: {path}")
+            _game_df = pd.read_excel(path)
+            _game_df['Game_id'] = _game_df['Game_id'].astype(str)
+            _game_df['Pool_id'] = _game_df['Pool_id'].astype(str)
+            return _game_df
+    
+    logger.warning("game_id_to_pools.xlsx not found. Some calculations will be skipped.")
+    return None
+
+
+def parse_pol_content(content: str) -> pd.DataFrame:
+    """
+    Parse .pol file content into a DataFrame.
+    
+    Handles format: "<value> <type_code>" or "<value> <type_code> <extra_value>"
+    Extra value (if present) gets added to the main value.
     
     Args:
         content: Raw file content
         
     Returns:
-        Tuple of (parsed records list, error messages list)
+        DataFrame with 'game_win' column
     """
-    records = []
-    errors = []
+    lines = content.strip().split('\n')
     
-    for line_num, line in enumerate(content.splitlines(), start=1):
-        line = line.strip()
-        
-        # Skip empty lines
-        if not line:
-            continue
-        
-        # Parse "value type" format
-        parts = line.split()
-        
-        if len(parts) >= 2:
+    # Parse into dataframe
+    data = []
+    for line in lines:
+        parts = line.strip().split()
+        if len(parts) >= 1:
             try:
                 value = int(parts[0])
-                type_code = parts[1].upper()
-                
-                records.append({
-                    'value': value,
-                    'type': type_code,
-                    'line_number': line_num
-                })
+                # Handle third column (extra value to add)
+                if len(parts) >= 3:
+                    try:
+                        extra = int(parts[2])
+                        value += extra
+                    except (ValueError, IndexError):
+                        pass
+                data.append(value)
             except ValueError:
-                # Try float if int fails
-                try:
-                    value = float(parts[0])
-                    type_code = parts[1].upper()
-                    records.append({
-                        'value': value,
-                        'type': type_code,
-                        'line_number': line_num
-                    })
-                except ValueError:
-                    errors.append(f"Line {line_num}: Could not parse '{line}'")
-        elif len(parts) == 1:
-            # Single value without type
-            try:
-                value = int(parts[0])
-                records.append({
-                    'value': value,
-                    'type': 'UNKNOWN',
-                    'line_number': line_num
-                })
-            except ValueError:
-                errors.append(f"Line {line_num}: Invalid format '{line}'")
+                continue
     
-    return records, errors
+    df = pd.DataFrame({'game_win': data})
+    return df
 
 
-def calculate_statistics(records: List[Dict[str, Any]]) -> Dict[str, Any]:
+def calculate_volatility(df: pd.DataFrame, min_bet: float, rtp: float) -> float:
     """
-    Calculate comprehensive statistics from parsed records.
+    Calculate volatility at 90% CI (z=1.645).
     
     Args:
-        records: List of parsed record dictionaries
+        df: DataFrame with 'game_win' column
+        min_bet: Minimum bet amount
+        rtp: RTP percentage
         
     Returns:
-        Dictionary with statistical analysis
+        Volatility value
     """
-    if not records:
-        return {'error': 'No records to analyze'}
+    n = len(df)
     
-    values = [r['value'] for r in records]
-    types = [r['type'] for r in records]
+    # Get value counts
+    stats = pd.DataFrame(df['game_win'].value_counts())
+    stats = stats.reset_index()
+    stats.columns = ['winning', 'count']
+    stats = stats.sort_values(by=['winning'])
     
-    # Basic statistics
-    total_count = len(values)
-    total_sum = sum(values)
-    min_value = min(values)
-    max_value = max(values)
-    avg_value = total_sum / total_count
+    # Calculate metrics
+    stats['win/bet'] = stats['winning'] / min_bet
+    stats['freq%'] = stats['count'] / n
+    stats['variance'] = (stats['freq%'] * (stats['win/bet'] - (rtp / 100)) ** 2).round(4)
     
-    # Calculate median
-    sorted_values = sorted(values)
-    mid = total_count // 2
-    if total_count % 2 == 0:
-        median_value = (sorted_values[mid - 1] + sorted_values[mid]) / 2
+    variance = stats['variance'].sum()
+    sd = np.sqrt(variance)
+    volatility = round(1.645 * sd, 2)
+    
+    return float(volatility)
+
+
+def classify_pool(pool_type: str) -> Dict[str, Any]:
+    """
+    Classify pool based on pool_type number.
+    
+    Args:
+        pool_type: Pool type string (e.g., '395', '50001234')
+        
+    Returns:
+        Dictionary with classification info
+    """
+    pool_type_str = str(pool_type)
+    
+    # Determine tag
+    if pool_type_str == '395':
+        tag = 'GAB/PFB'
+    elif len(pool_type_str) > 4 and pool_type_str[0] == '5':
+        tag = 'PFB'
     else:
-        median_value = sorted_values[mid]
+        tag = 'REG'
     
-    # Calculate standard deviation
-    variance = sum((x - avg_value) ** 2 for x in values) / total_count
-    std_dev = variance ** 0.5
+    # Determine if flat
+    is_flat = 0
+    max_multiplier = None
     
-    # Type distribution
-    type_counts = Counter(types)
-    type_distribution = dict(type_counts.most_common())
-    
-    # Value distribution by type
-    type_stats = {}
-    for type_code in set(types):
-        type_values = [r['value'] for r in records if r['type'] == type_code]
-        if type_values:
-            type_stats[type_code] = {
-                'count': len(type_values),
-                'sum': sum(type_values),
-                'min': min(type_values),
-                'max': max(type_values),
-                'avg': round(sum(type_values) / len(type_values), 2),
-                'percentage': round(len(type_values) / total_count * 100, 2)
-            }
-    
-    # Value range buckets
-    buckets = {
-        '0-500': 0,
-        '501-1000': 0,
-        '1001-2000': 0,
-        '2001-3000': 0,
-        '3001-5000': 0,
-        '5001+': 0
-    }
-    
-    for v in values:
-        if v <= 500:
-            buckets['0-500'] += 1
-        elif v <= 1000:
-            buckets['501-1000'] += 1
-        elif v <= 2000:
-            buckets['1001-2000'] += 1
-        elif v <= 3000:
-            buckets['2001-3000'] += 1
-        elif v <= 5000:
-            buckets['3001-5000'] += 1
-        else:
-            buckets['5001+'] += 1
-    
-    # Convert bucket counts to percentages too
-    value_distribution = {
-        bucket: {
-            'count': count,
-            'percentage': round(count / total_count * 100, 2)
-        }
-        for bucket, count in buckets.items()
-    }
+    if len(pool_type_str) > 4 and pool_type_str[0] == '4':
+        is_flat = 1
+        max_multiplier = pool_type_str[-4:]
     
     return {
-        'summary': {
-            'total_records': total_count,
-            'total_sum': total_sum,
-            'min_value': min_value,
-            'max_value': max_value,
-            'avg_value': round(avg_value, 2),
-            'median_value': round(median_value, 2),
-            'std_deviation': round(std_dev, 2),
-            'unique_types': len(type_counts),
-            'unique_values': len(set(values))
-        },
-        'type_distribution': type_distribution,
-        'type_statistics': type_stats,
-        'value_distribution': value_distribution
+        'tag': tag,
+        'is_flat': is_flat,
+        'max_multiplier': max_multiplier
     }
 
 
-def extract_filename_metadata(filename: str) -> Dict[str, Any]:
-    """
-    Extract metadata from filename pattern like 'Pool_0201_395.pol'
-    
-    Args:
-        filename: The filename to parse
-        
-    Returns:
-        Dictionary with extracted metadata
-    """
-    metadata = {}
-    
-    # Remove extension
-    name = filename.replace('.pol', '')
-    
-    # Try to parse Pool_XXXX_YYY pattern
-    match = re.match(r'(\w+)_(\d+)_(\d+)', name)
-    if match:
-        metadata['pool_type'] = match.group(1)
-        metadata['pool_id'] = match.group(2)
-        metadata['pool_variant'] = match.group(3)
-    else:
-        # Try simpler patterns
-        parts = name.split('_')
-        if len(parts) >= 1:
-            metadata['pool_type'] = parts[0]
-        if len(parts) >= 2:
-            metadata['pool_id'] = parts[1]
-        if len(parts) >= 3:
-            metadata['pool_variant'] = '_'.join(parts[2:])
-    
-    return metadata
-
-
-def transform_pol_data(file_info: Dict[str, Any]) -> Dict[str, Any]:
+def transform_pol_data(file_info: Dict[str, Any], game_df: Optional[pd.DataFrame] = None) -> Dict[str, Any]:
     """
     Main transformation function for .pol pool data files.
     
+    Calculates RTP, volatility, hit frequency based on game lookup data.
+    
     Args:
         file_info: Dictionary containing file metadata and content
+        game_df: Optional game lookup DataFrame
         
     Returns:
         Transformed data dictionary ready for loading
@@ -231,47 +178,84 @@ def transform_pol_data(file_info: Dict[str, Any]) -> Dict[str, Any]:
     content = file_info.get('content', '')
     filename = file_info.get('file_name', '')
     
-    # Parse the content
-    records, parse_errors = parse_pol_content(content)
+    # Extract pool info from filename (Pool_0201_395.pol)
+    name = filename.replace('.pol', '')
+    splits = name.split('_')
     
-    # Calculate statistics
-    statistics = calculate_statistics(records)
+    pool_id = splits[1] if len(splits) > 1 else None
+    pool_type = splits[2] if len(splits) > 2 else None
     
-    # Extract filename metadata
-    filename_meta = extract_filename_metadata(filename)
+    # Parse content into DataFrame
+    df = parse_pol_content(content)
+    size = len(df)
     
-    # Build transformed output
-    transformed = {
-        # File metadata
+    # Initialize results
+    min_bet = None
+    game_ids = []
+    rtp = None
+    volatility = None
+    hit_freq = None
+    
+    # Get min_bet and game_ids from lookup
+    if game_df is not None and pool_id is not None:
+        # Try exact match first
+        tmp = game_df[game_df['Pool_id'] == pool_id]
+        
+        # If no match, try without leading zeros
+        if tmp.empty:
+            pool_id_stripped = pool_id.lstrip('0') or '0'
+            tmp = game_df[game_df['Pool_id'] == pool_id_stripped]
+        
+        # If still no match, try padding the lookup values
+        if tmp.empty:
+            tmp = game_df[game_df['Pool_id'].str.zfill(4) == pool_id]
+        
+        if not tmp.empty:
+            min_bet = float(tmp['Bet'].iloc[0])
+            game_ids = tmp['Game_id'].tolist()
+    
+    # Calculate metrics if we have min_bet
+    if min_bet is not None and min_bet > 0 and size > 0:
+        # RTP = sum(wins) / (count * min_bet) * 100
+        total_win = df['game_win'].sum()
+        rtp = round(float(total_win / (size * min_bet)) * 100, 2)
+        
+        # Hit Frequency = count(win > 0) / total_count * 100
+        hits = len(df[df['game_win'] > 0])
+        hit_freq = round((hits / size) * 100, 2)
+        
+        # Volatility at 90% CI
+        volatility = calculate_volatility(df, min_bet, rtp)
+    
+    # Classify pool
+    classification = classify_pool(pool_type) if pool_type else {'tag': 'UNKNOWN', 'is_flat': 0, 'max_multiplier': None}
+    
+    # Basic statistics
+    values = df['game_win'].tolist()
+    
+    # Build result
+    result = {
+        'pool_name': filename,
+        'pool_id': pool_id,
+        'pool_type': pool_type,
+        'game_ids': game_ids,
+        'min_bet': min_bet,
+        'rtp': rtp,
+        'volatility': volatility,
+        'is_flat': classification['is_flat'],
+        'tag': classification['tag'],
+        'size': size,
+        'max_multiplier': classification['max_multiplier'],
         'metadata': {
             'source_file': file_info.get('relative_path'),
             'file_name': filename,
-            'parent_folder': file_info.get('parent_folder'),
             'folder_path': file_info.get('folder_path'),
             'processed_at': datetime.now(timezone.utc).isoformat(),
-            'file_size_bytes': file_info.get('size_bytes'),
-            **filename_meta  # Include parsed filename components
-        },
-        
-        # Statistics and analysis
-        'statistics': statistics,
-        
-        # Parse info
-        'parse_info': {
-            'total_lines': file_info.get('line_count', len(content.splitlines())),
-            'parsed_records': len(records),
-            'parse_errors': len(parse_errors),
-            'error_details': parse_errors[:10] if parse_errors else []  # First 10 errors
-        },
-        
-        # Sample records (first and last 10)
-        'sample_data': {
-            'first_10': records[:10],
-            'last_10': records[-10:] if len(records) > 10 else []
+            'hit_frequency': hit_freq
         }
     }
     
-    return transformed
+    return result
 
 
 def generate_aggregated_summary(all_transformed: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -288,26 +272,46 @@ def generate_aggregated_summary(all_transformed: List[Dict[str, Any]]) -> Dict[s
         return {}
     
     total_records = 0
-    total_sum = 0
-    all_types = Counter()
+    tags_count = Counter()
     files_by_folder = Counter()
+    rtp_values = []
+    volatility_values = []
     
     for data in all_transformed:
-        stats = data.get('statistics', {}).get('summary', {})
-        total_records += stats.get('total_records', 0)
-        total_sum += stats.get('total_sum', 0)
+        total_records += data.get('size', 0)
         
-        type_dist = data.get('statistics', {}).get('type_distribution', {})
-        all_types.update(type_dist)
+        if data.get('tag'):
+            tags_count[data['tag']] += 1
+        
+        if data.get('rtp') is not None:
+            rtp_values.append(data['rtp'])
+        
+        if data.get('volatility') is not None:
+            volatility_values.append(data['volatility'])
         
         folder = data.get('metadata', {}).get('parent_folder', 'root')
         files_by_folder[folder] += 1
     
-    return {
+    summary = {
         'total_files_processed': len(all_transformed),
         'total_records_across_all_files': total_records,
-        'total_sum_across_all_files': total_sum,
-        'global_type_distribution': dict(all_types.most_common()),
+        'tags_distribution': dict(tags_count),
         'files_by_folder': dict(files_by_folder),
         'generated_at': datetime.now(timezone.utc).isoformat()
     }
+    
+    if rtp_values:
+        summary['rtp_stats'] = {
+            'min': min(rtp_values),
+            'max': max(rtp_values),
+            'avg': round(sum(rtp_values) / len(rtp_values), 2)
+        }
+    
+    if volatility_values:
+        summary['volatility_stats'] = {
+            'min': min(volatility_values),
+            'max': max(volatility_values),
+            'avg': round(sum(volatility_values) / len(volatility_values), 2)
+        }
+    
+    return summary

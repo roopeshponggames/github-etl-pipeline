@@ -46,15 +46,17 @@ def save_to_metadata_folder(
     updated_count = 0
     for transformed_data in transformed_data_list:
         try:
-            # Use source_file (relative path) as the unique key
+            # Use relative path as the unique key
             metadata = transformed_data.get('metadata', {})
-            relative_path = metadata.get('source_file')
+            relative_path = metadata.get('relative_path')
             
             if not relative_path:
-                logger.warning(f"Missing source_file in metadata for pool {transformed_data.get('pool_name')}, skipping item")
+                logger.warning("Missing relative_path in metadata, skipping item")
                 continue
             
             # Normalize path separators to look cleaner in JSON
+            # key = str(Path(relative_path).as_posix())
+            # OR better yet, keeps the platform specific separator? No, standardized is better.
             key = str(Path(relative_path).as_posix())
             
             all_data[key] = transformed_data

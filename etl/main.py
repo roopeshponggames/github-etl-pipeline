@@ -10,7 +10,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 from extract import extract_all_pol_files, get_changed_pol_files
-from transform import transform_pol_data, generate_aggregated_summary
+from transform import transform_pol_data, generate_aggregated_summary, load_game_lookup
 from load import save_to_metadata_folder, save_summary_report
 
 # Configure logging
@@ -35,7 +35,8 @@ def get_repo_root() -> Path:
         if (current / '.git').exists():
             return current
         current = current.parent
-    raise RuntimeError("Could not find repository root")
+    # Fallback to parent of etl folder
+    return Path(__file__).resolve().parent.parent
 
 
 def run_pipeline(process_all: bool = False):
@@ -53,6 +54,19 @@ def run_pipeline(process_all: bool = False):
     
     # Create Meta_data directory if it doesn't exist
     metadata_dir.mkdir(exist_ok=True)
+    
+    # =========================================================================
+    # LOAD GAME LOOKUP
+    # =========================================================================
+    logger.info("=" * 60)
+    logger.info("LOADING GAME LOOKUP")
+    logger.info("=" * 60)
+    
+    game_df = load_game_lookup(repo_root)
+    if game_df is not None:
+        logger.info(f"Loaded game lookup with {len(game_df)} entries")
+    else:
+        logger.warning("Game lookup not loaded - RTP/volatility calculations will be skipped")
     
     # =========================================================================
     # EXTRACT
@@ -88,9 +102,13 @@ def run_pipeline(process_all: bool = False):
     
     for file_info in pol_files_data:
         try:
-            result = transform_pol_data(file_info)
+            result = transform_pol_data(file_info, game_df)
             transformed_data.append(result)
-            logger.info(f"✓ Transformed: {file_info['relative_path']}")
+            
+            # Log key metrics
+            rtp_str = f"RTP={result.get('rtp')}%" if result.get('rtp') else "RTP=N/A"
+            vol_str = f"Vol={result.get('volatility')}" if result.get('volatility') else "Vol=N/A"
+            logger.info(f"✓ Transformed: {file_info['relative_path']} | {rtp_str} | {vol_str}")
         except Exception as e:
             error_msg = f"✗ Error transforming {file_info['relative_path']}: {str(e)}"
             logger.error(error_msg)

@@ -1,0 +1,44 @@
+{
+  "samples/pools2/pool_6371_9999.pol": {
+    "pool_name": "pool_6371_9999.pol",
+    "pool_id": "6371",
+    "pool_type": "9999",
+    "game_ids": [
+      "6371"
+    ],
+    "min_bet": 10.0,
+    "rtp": 94.0,
+    "volatility": 13.86,
+    "is_flat": 0,
+    "tag": "REG",
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples\\pools2\\pool_6371_9999.pol",
+      "file_name": "pool_6371_9999.pol",
+      "folder_path": "samples\\pools2",
+      "processed_at": "2026-01-06T21:33:27.350736+00:00",
+      "hit_frequency": 18.36
+    }
+  },
+  "samples/pools2/Pool_0201_395.pol": {
+    "pool_name": "Pool_0201_395.pol",
+    "pool_id": "0201",
+    "pool_type": "395",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": "GAB/PFB",
+    "size": 100000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples\\pools2\\Pool_0201_395.pol",
+      "file_name": "Pool_0201_395.pol",
+      "folder_path": "samples\\pools2",
+      "processed_at": "2026-01-06T21:33:26.755269+00:00",
+      "hit_frequency": null
+    }
+  }
+}
