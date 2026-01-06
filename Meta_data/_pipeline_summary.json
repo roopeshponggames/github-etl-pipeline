@@ -1,12 +1,13 @@
 {
-  "timestamp": "2026-01-05T21:50:27.824196+00:00",
-  "total_files_processed": 3,
-  "successful_transforms": 3,
+  "timestamp": "2026-01-06T16:12:09.615444+00:00",
+  "total_files_processed": 4,
+  "successful_transforms": 4,
   "failed_transforms": 0,
   "errors": [],
   "output_files": [
     "Meta_data/samples/pools/0201/Pool_0201_292.json",
     "Meta_data/samples/pools/0201/Pool_0201_294.json",
+    "Meta_data/samples/pools/Pool_0201_395.json",
     "Meta_data/samples/pools/pool_6371_9999.json"
   ],
   "aggregated": {
@@ -25,6 +26,6 @@
       "0201": 2,
       "pools": 2
     },
-    "generated_at": "2026-01-05T21:50:27.824276+00:00"
+    "generated_at": "2026-01-06T16:12:09.615565+00:00"
   }
 }
