@@ -3,9 +3,9 @@
     "source_file": "samples\\pools\\pool_6371_9999.pol",
     "file_name": "pool_6371_9999.pol",
     "parent_folder": "pools",
-    "folder_path": "samples\\pools",
-    "processed_at": "2026-01-05T22:01:43.486886+00:00",
-    "file_size_bytes": 4114035,
+    "folder_path": "samples/pools",
+    "processed_at": "2026-01-05T21:50:27.735118+00:00",
+    "file_size_bytes": 3114035,
     "pool_type": "pool",
     "pool_id": "6371",
     "pool_variant": "9999"

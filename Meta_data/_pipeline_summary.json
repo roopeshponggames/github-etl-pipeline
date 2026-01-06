@@ -1,14 +1,13 @@
 {
-  "timestamp": "2026-01-05T22:01:43.682462+00:00",
-  "total_files_processed": 4,
-  "successful_transforms": 4,
+  "timestamp": "2026-01-05T21:50:27.824196+00:00",
+  "total_files_processed": 3,
+  "successful_transforms": 3,
   "failed_transforms": 0,
   "errors": [],
   "output_files": [
-    "Meta_data\\samples\\pools\\0201\\Pool_0201_292.json",
-    "Meta_data\\samples\\pools\\0201\\Pool_0201_294.json",
-    "Meta_data\\samples\\pools\\Pool_0201_395.json",
-    "Meta_data\\samples\\pools\\pool_6371_9999.json"
+    "Meta_data/samples/pools/0201/Pool_0201_292.json",
+    "Meta_data/samples/pools/0201/Pool_0201_294.json",
+    "Meta_data/samples/pools/pool_6371_9999.json"
   ],
   "aggregated": {
     "total_files_processed": 4,
@@ -26,6 +25,6 @@
       "0201": 2,
       "pools": 2
     },
-    "generated_at": "2026-01-05T22:01:43.683990+00:00"
+    "generated_at": "2026-01-05T21:50:27.824276+00:00"
   }
 }
