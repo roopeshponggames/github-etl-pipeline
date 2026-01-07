@@ -45,5 +45,600 @@
       "processed_at": "2026-01-07T15:45:40+00:00",
       "hit_frequency": null
     }
+  },
+  "samples/pools2/0201/Pool_0201_1401.pol": {
+    "pool_name": "Pool_0201_1401.pol",
+    "pool_id": "0201",
+    "pool_type": "1401",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_1401.pol",
+      "file_name": "Pool_0201_1401.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:34+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_292.pol": {
+    "pool_name": "Pool_0201_292.pol",
+    "pool_id": "0201",
+    "pool_type": "292",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_292.pol",
+      "file_name": "Pool_0201_292.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:34+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_294.pol": {
+    "pool_name": "Pool_0201_294.pol",
+    "pool_id": "0201",
+    "pool_type": "294",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_294.pol",
+      "file_name": "Pool_0201_294.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:35+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_395.pol": {
+    "pool_name": "Pool_0201_395.pol",
+    "pool_id": "0201",
+    "pool_type": "395",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "GAB",
+      "PFB"
+    ],
+    "size": 100000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_395.pol",
+      "file_name": "Pool_0201_395.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:35+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40920160.pol": {
+    "pool_name": "Pool_0201_40920160.pol",
+    "pool_id": "0201",
+    "pool_type": "40920160",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0160",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40920160.pol",
+      "file_name": "Pool_0201_40920160.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:35+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40920400.pol": {
+    "pool_name": "Pool_0201_40920400.pol",
+    "pool_id": "0201",
+    "pool_type": "40920400",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0400",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40920400.pol",
+      "file_name": "Pool_0201_40920400.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:36+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40940060.pol": {
+    "pool_name": "Pool_0201_40940060.pol",
+    "pool_id": "0201",
+    "pool_type": "40940060",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0060",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40940060.pol",
+      "file_name": "Pool_0201_40940060.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:36+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40940160.pol": {
+    "pool_name": "Pool_0201_40940160.pol",
+    "pool_id": "0201",
+    "pool_type": "40940160",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0160",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40940160.pol",
+      "file_name": "Pool_0201_40940160.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:37+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40940400.pol": {
+    "pool_name": "Pool_0201_40940400.pol",
+    "pool_id": "0201",
+    "pool_type": "40940400",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0400",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40940400.pol",
+      "file_name": "Pool_0201_40940400.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:37+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40950060.pol": {
+    "pool_name": "Pool_0201_40950060.pol",
+    "pool_id": "0201",
+    "pool_type": "40950060",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0060",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40950060.pol",
+      "file_name": "Pool_0201_40950060.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:38+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40950160.pol": {
+    "pool_name": "Pool_0201_40950160.pol",
+    "pool_id": "0201",
+    "pool_type": "40950160",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0160",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40950160.pol",
+      "file_name": "Pool_0201_40950160.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:38+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40950400.pol": {
+    "pool_name": "Pool_0201_40950400.pol",
+    "pool_id": "0201",
+    "pool_type": "40950400",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0400",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40950400.pol",
+      "file_name": "Pool_0201_40950400.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:39+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40960060.pol": {
+    "pool_name": "Pool_0201_40960060.pol",
+    "pool_id": "0201",
+    "pool_type": "40960060",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0060",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40960060.pol",
+      "file_name": "Pool_0201_40960060.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:39+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40960160.pol": {
+    "pool_name": "Pool_0201_40960160.pol",
+    "pool_id": "0201",
+    "pool_type": "40960160",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0160",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40960160.pol",
+      "file_name": "Pool_0201_40960160.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:40+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_40960400.pol": {
+    "pool_name": "Pool_0201_40960400.pol",
+    "pool_id": "0201",
+    "pool_type": "40960400",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 1,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": "0400",
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_40960400.pol",
+      "file_name": "Pool_0201_40960400.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:40+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_50940020.pol": {
+    "pool_name": "Pool_0201_50940020.pol",
+    "pool_id": "0201",
+    "pool_type": "50940020",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "PFB"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_50940020.pol",
+      "file_name": "Pool_0201_50940020.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:41+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_50940198.pol": {
+    "pool_name": "Pool_0201_50940198.pol",
+    "pool_id": "0201",
+    "pool_type": "50940198",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "PFB"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_50940198.pol",
+      "file_name": "Pool_0201_50940198.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:41+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_550940020.pol": {
+    "pool_name": "Pool_0201_550940020.pol",
+    "pool_id": "0201",
+    "pool_type": "550940020",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "PFB"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_550940020.pol",
+      "file_name": "Pool_0201_550940020.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:42+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_880.pol": {
+    "pool_name": "Pool_0201_880.pol",
+    "pool_id": "0201",
+    "pool_type": "880",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_880.pol",
+      "file_name": "Pool_0201_880.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:42+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_885.pol": {
+    "pool_name": "Pool_0201_885.pol",
+    "pool_id": "0201",
+    "pool_type": "885",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_885.pol",
+      "file_name": "Pool_0201_885.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:42+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_921.pol": {
+    "pool_name": "Pool_0201_921.pol",
+    "pool_id": "0201",
+    "pool_type": "921",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_921.pol",
+      "file_name": "Pool_0201_921.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:43+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_935.pol": {
+    "pool_name": "Pool_0201_935.pol",
+    "pool_id": "0201",
+    "pool_type": "935",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_935.pol",
+      "file_name": "Pool_0201_935.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:43+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_941.pol": {
+    "pool_name": "Pool_0201_941.pol",
+    "pool_id": "0201",
+    "pool_type": "941",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_941.pol",
+      "file_name": "Pool_0201_941.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:44+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_945.pol": {
+    "pool_name": "Pool_0201_945.pol",
+    "pool_id": "0201",
+    "pool_type": "945",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_945.pol",
+      "file_name": "Pool_0201_945.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:44+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_951.pol": {
+    "pool_name": "Pool_0201_951.pol",
+    "pool_id": "0201",
+    "pool_type": "951",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_951.pol",
+      "file_name": "Pool_0201_951.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:45+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_955.pol": {
+    "pool_name": "Pool_0201_955.pol",
+    "pool_id": "0201",
+    "pool_type": "955",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_955.pol",
+      "file_name": "Pool_0201_955.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:45+00:00",
+      "hit_frequency": null
+    }
+  },
+  "samples/pools2/0201/Pool_0201_961.pol": {
+    "pool_name": "Pool_0201_961.pol",
+    "pool_id": "0201",
+    "pool_type": "961",
+    "game_ids": [],
+    "min_bet": null,
+    "rtp": null,
+    "volatility": null,
+    "is_flat": 0,
+    "tag": [
+      "REG"
+    ],
+    "size": 1000000,
+    "max_multiplier": null,
+    "metadata": {
+      "source_file": "samples/pools2/0201/Pool_0201_961.pol",
+      "file_name": "Pool_0201_961.pol",
+      "folder_path": "samples/pools2/0201",
+      "processed_at": "2026-01-07T15:56:45+00:00",
+      "hit_frequency": null
+    }
   }
 }
