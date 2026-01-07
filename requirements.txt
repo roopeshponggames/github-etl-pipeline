@@ -4,6 +4,7 @@
 # Optional: For enhanced data processing (uncomment if needed)
 numpy==2.2.6
 pandas==2.3.0
+openpyxl==3.1.5
 # pyyaml>=6.0
 
 # Optional: For better logging and CLI (uncomment if needed)
