@@ -1,23 +1,31 @@
 {
-  "timestamp": "2026-01-07T15:56:45+00:00",
-  "total_files_processed": 27,
-  "successful_transforms": 27,
+  "timestamp": "2026-01-07T15:59:26+00:00",
+  "total_files_processed": 1,
+  "successful_transforms": 1,
   "failed_transforms": 0,
   "errors": [],
   "output_files": [
     "Meta_data/all_pools_data.json"
   ],
   "aggregated": {
-    "total_files_processed": 27,
-    "total_records_across_all_files": 26100000,
+    "total_files_processed": 1,
+    "total_records_across_all_files": 999999,
     "tags_distribution": {
-      "REG": 23,
-      "GAB": 1,
-      "PFB": 4
+      "REG": 1
     },
     "files_by_folder": {
-      "root": 27
+      "root": 1
     },
-    "generated_at": "2026-01-07T15:56:45+00:00"
+    "generated_at": "2026-01-07T15:59:26+00:00",
+    "rtp_stats": {
+      "min": 94.0,
+      "max": 94.0,
+      "avg": 94.0
+    },
+    "volatility_stats": {
+      "min": 13.86,
+      "max": 13.86,
+      "avg": 13.86
+    }
   }
 }

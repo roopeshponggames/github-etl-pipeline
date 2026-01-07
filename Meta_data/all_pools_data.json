@@ -13,13 +13,13 @@
     "tag": [
       "REG"
     ],
-    "size": 1000000,
+    "size": 999999,
     "max_multiplier": null,
     "metadata": {
       "source_file": "samples/pools2/pool_6371_9999.pol",
       "file_name": "pool_6371_9999.pol",
       "folder_path": "samples/pools2",
-      "processed_at": "2026-01-07T15:45:41+00:00",
+      "processed_at": "2026-01-07T15:59:26+00:00",
       "hit_frequency": 18.36
     }
   },
