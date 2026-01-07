@@ -133,7 +133,7 @@ def run_pipeline(process_all: bool = False):
     
     # Generate summary report
     summary = {
-        'timestamp': datetime.now(timezone.utc).isoformat(),
+        'timestamp': datetime.now(timezone.utc).isoformat(timespec='seconds'),
         'total_files_processed': len(pol_files_data),
         'successful_transforms': len(transformed_data),
         'failed_transforms': len(errors),

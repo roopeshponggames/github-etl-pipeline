@@ -116,7 +116,7 @@ def generate_index_file(metadata_dir: Path, repo_root: Path) -> Path:
         Path to the index file
     """
     index_data = {
-        'generated_at': datetime.utcnow().isoformat(),
+        'generated_at': datetime.utcnow().isoformat(timespec='seconds'),
         'files': []
     }
     

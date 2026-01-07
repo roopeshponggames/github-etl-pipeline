@@ -141,11 +141,11 @@ def classify_pool(pool_type: str) -> Dict[str, Any]:
     
     # Determine tag
     if pool_type_str == '395':
-        tag = 'GAB/PFB'
+        tag = ['GAB','PFB']
     elif len(pool_type_str) > 4 and pool_type_str[0] == '5':
-        tag = 'PFB'
+        tag = ['PFB']
     else:
-        tag = 'REG'
+        tag = ['REG']
     
     # Determine if flat
     is_flat = 0
@@ -250,7 +250,7 @@ def transform_pol_data(file_info: Dict[str, Any], game_df: Optional[pd.DataFrame
             'source_file': file_info.get('relative_path'),
             'file_name': filename,
             'folder_path': file_info.get('folder_path'),
-            'processed_at': datetime.now(timezone.utc).isoformat(),
+            'processed_at': datetime.now(timezone.utc).isoformat(timespec='seconds'),
             'hit_frequency': hit_freq
         }
     }
@@ -297,7 +297,7 @@ def generate_aggregated_summary(all_transformed: List[Dict[str, Any]]) -> Dict[s
         'total_records_across_all_files': total_records,
         'tags_distribution': dict(tags_count),
         'files_by_folder': dict(files_by_folder),
-        'generated_at': datetime.now(timezone.utc).isoformat()
+        'generated_at': datetime.now(timezone.utc).isoformat(timespec='seconds')
     }
     
     if rtp_values:
