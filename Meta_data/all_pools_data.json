@@ -10,14 +10,16 @@
     "rtp": 94.0,
     "volatility": 13.86,
     "is_flat": 0,
-    "tag": "REG",
+    "tag": [
+      "REG"
+    ],
     "size": 1000000,
     "max_multiplier": null,
     "metadata": {
       "source_file": "samples/pools2/pool_6371_9999.pol",
       "file_name": "pool_6371_9999.pol",
       "folder_path": "samples/pools2",
-      "processed_at": "2026-01-07T14:56:38.811237+00:00",
+      "processed_at": "2026-01-07T15:45:41+00:00",
       "hit_frequency": 18.36
     }
   },
@@ -30,14 +32,17 @@
     "rtp": null,
     "volatility": null,
     "is_flat": 0,
-    "tag": "GAB/PFB",
+    "tag": [
+      "GAB",
+      "PFB"
+    ],
     "size": 100000,
     "max_multiplier": null,
     "metadata": {
       "source_file": "samples/pools2/Pool_0201_395.pol",
       "file_name": "Pool_0201_395.pol",
       "folder_path": "samples/pools2",
-      "processed_at": "2026-01-07T14:56:38.349015+00:00",
+      "processed_at": "2026-01-07T15:45:40+00:00",
       "hit_frequency": null
     }
   }

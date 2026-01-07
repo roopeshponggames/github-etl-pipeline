@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-01-07T14:56:38.813822+00:00",
+  "timestamp": "2026-01-07T15:45:41+00:00",
   "total_files_processed": 2,
   "successful_transforms": 2,
   "failed_transforms": 0,
@@ -11,13 +11,14 @@
     "total_files_processed": 2,
     "total_records_across_all_files": 1100000,
     "tags_distribution": {
-      "GAB/PFB": 1,
+      "GAB": 1,
+      "PFB": 1,
       "REG": 1
     },
     "files_by_folder": {
       "root": 2
     },
-    "generated_at": "2026-01-07T14:56:38.813894+00:00",
+    "generated_at": "2026-01-07T15:45:41+00:00",
     "rtp_stats": {
       "min": 94.0,
       "max": 94.0,
