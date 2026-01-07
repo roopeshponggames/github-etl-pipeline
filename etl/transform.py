@@ -281,7 +281,12 @@ def generate_aggregated_summary(all_transformed: List[Dict[str, Any]]) -> Dict[s
         total_records += data.get('size', 0)
         
         if data.get('tag'):
-            tags_count[data['tag']] += 1
+            tags = data['tag']
+            if isinstance(tags, list):
+                for tag in tags:
+                    tags_count[tag] += 1
+            else:
+                tags_count[tags] += 1
         
         if data.get('rtp') is not None:
             rtp_values.append(data['rtp'])
